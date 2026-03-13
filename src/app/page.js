@@ -2,12 +2,9 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBackward } from "@fortawesome/free-solid-svg-icons"
 
 export default function Home() 
 {
-  const [localQuizzes, setLocalQuizzes] = useState(JSON.parse(localStorage.getItem("quizzes")) ?? [])
   const router = useRouter()
 
   const [topic, setTopic] = useState("")
