@@ -46,7 +46,7 @@ export default async function Page({params, searchParams})
         const data = JSON.parse(content);   
         if(data.length == 0) throw new Error(JSON.stringify({message: 'Invalid AI Generation. Try again later', code : 500}))
 
-        return <QuizPage quiz={data}/>
+        return <QuizPage title={topic} quiz={data}/>
     }
     catch (error)
     {
