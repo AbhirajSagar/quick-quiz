@@ -96,7 +96,7 @@ export default function QuizPage({onBack = null, title, quiz })
     }
 
     return (
-        <div className="p-4 sm:p-12 bg-gray-900 min-h-screen">
+        <div className="p-4 sm:p-12 bg-gray-900 min-h-screen flex justify-center items-center flex-col">
             <div className="w-full max-w-4xl mx-auto rounded-lg bg-gray-800 px-4 py-4 flex justify-between items-center">
                 <FontAwesomeIcon onClick={onBack} icon={faBackward} className="text-2xl bg-gray-900 p-2 rounded text-white" />
                 <h2 className="text-white text-2xl font-bold">

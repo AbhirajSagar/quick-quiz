@@ -20,23 +20,30 @@ export default function Page()
 
     async function extractText()
     {
-        if(!file) return;
-        
-        setIsLoading(true);
-        try {
+        try 
+        {
+            if(!file) return;
+            setIsLoading(true);
+
             const text = await ExtractText(file);
-            if(text.length == 0) {
+            if(text.length == 0) 
+            {
                 setIsLoading(false);
                 return;
             }
 
             const data = await generateQuizFromText(text, count, level, includeExplanations);
             setQuizData(data);
-        } catch (error) {
+        } 
+        catch (error) 
+        {
             console.error(error);
             alert("Failed to generate quiz. Please try again.");
         }
-        setIsLoading(false);
+        finally
+        {
+            setIsLoading(false);
+        }
     }
 
     if (quizData) {
@@ -44,26 +51,18 @@ export default function Page()
     }
 
     return (
-        <div className="p-2 sm:p-12 bg-gray-900 min-h-screen flex flex-col items-center text-white">
-
+        <div className="p-2 sm:p-12 bg-gray-900 min-h-screen flex flex-col justify-center items-center text-white">
             <div className="w-full max-w-xl bg-gray-800 rounded-xl shadow-lg overflow-hidden">
-
                 <div className="px-6 py-4 border-b border-gray-700">
                     <h1 className="text-xl font-semibold text-center">
                         Generate Quiz from PDF
                     </h1>
                 </div>
-
                 <div className="p-6 flex flex-col gap-6">
-
                     <FileInput value={file} onChange={setFile} />
-
                     <QuestionSlider value={count} onChange={setCount} />
-
                     <LevelSelect value={level} onChange={setLevel} />
-
                     <ExplanationToggle value={includeExplanations} onChange={setIncludeExplanations} />
-
                     <button 
                         disabled={!file || loading}
                         className="bg-blue-600 hover:bg-blue-500 disabled:bg-gray-600 py-3 rounded-lg font-medium transition flex items-center justify-center gap-2"
@@ -74,11 +73,8 @@ export default function Page()
                         )}
                         {loading ? "Generating..." : "Generate Quiz"}
                     </button>
-
                 </div>
-
             </div>
-
         </div>
     )
 }
